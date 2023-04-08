@@ -21,10 +21,25 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+        static bool Is_Contains_Actions(string input)
+        {
+
+
+            if (input.Contains('+') | input.Contains('-') | input.Contains('*') | input.Contains('/'))
+            {
+                return true;
+            }else return false;
+
+        }
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        
 
         static string Main_Text(string input)
         {
@@ -35,9 +50,19 @@ namespace Calculator
 
         private void Result_Button_Click(object sender, RoutedEventArgs e)
         {
-            string value = new DataTable().Compute(Main_Text(main_textbox.Text), null).ToString();
 
-            main_textbox.Text = value;
+            if (Is_Contains_Actions(main_textbox.Text))
+            {
+                string value = new DataTable().Compute(Main_Text(main_textbox.Text), null).ToString();
+
+                string action = main_textbox.Text + " = " + value;
+
+                main_textbox.Text = value;
+
+                History_ListBox.Items.Add(action);
+            }
+
+            
         }
 
         private void Clear_Button_Click(object sender, RoutedEventArgs e)
@@ -130,5 +155,29 @@ namespace Calculator
             main_textbox.Text += ",";
         }
 
+        private void History_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (History_ListBox.Visibility == Visibility.Hidden)
+            {
+                History_ListBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                History_ListBox.Visibility = Visibility.Hidden;
+            }
+           
+
+            
+        }
+
+        private void History_ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            string filtred = History_ListBox.SelectedItem.ToString().Substring(History_ListBox.SelectedItem.ToString().IndexOf('=')+2);
+
+            main_textbox.Text = filtred;
+
+        }
     }
 }

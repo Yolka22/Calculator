@@ -31,6 +31,7 @@
 
         <TextBox Style="{DynamicResource Main_textbox_Style}" Padding="10" Grid.Row="0" x:Name="main_textbox" Grid.ColumnSpan="4" FontSize="20" Background="BurlyWood" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="2,5"></TextBox>
 
+        <ListBox Style="{DynamicResource History_Listbox_Style}" x:Name="History_ListBox" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="Hidden"  Panel.ZIndex="1" MouseDoubleClick="History_ListBox_MouseDoubleClick"></ListBox>
 
 
         <Button x:Name="Clear_Button" Style="{DynamicResource Control_btn_Style}"  Click="Clear_Button_Click" Grid.Column="0" Grid.Row="1" Content="C"/>
@@ -53,7 +54,8 @@
         <Button x:Name="Three_Button" Style="{DynamicResource Control_btn_Style}" Click="Three_Button_Click" Grid.Column="2" Grid.Row="4" Content="3"/>
         <Button x:Name="Plus_Button" Style="{DynamicResource Control_btn_Style}" Click="Plus_Button_Click" Grid.Column="3" Grid.Row="4" Content="+"/>
 
-        <Button x:Name="Zero_Button" Style="{DynamicResource Control_btn_Style}"  Click="Zero_Button_Click" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="0"/>
+        <Button x:Name="History_Button" Style="{DynamicResource Control_btn_Style}" Click="History_Button_Click" Grid.Column="0" Grid.Row="5" Content="History"/>
+        <Button x:Name="Zero_Button" Style="{DynamicResource Control_btn_Style}"  Click="Zero_Button_Click" Grid.Column="1" Grid.Row="5"  Content="0"/>
         <Button x:Name="Coma_Button" Style="{DynamicResource Control_btn_Style}"  Click="Coma_Button_Click" Grid.Column="2" Grid.Row="5" Content=","/>
         <Button x:Name="Result_Button" Style="{DynamicResource Control_btn_Style}"  Grid.Column="3" Grid.Row="5" Content="=" Click="Result_Button_Click"/>
 
