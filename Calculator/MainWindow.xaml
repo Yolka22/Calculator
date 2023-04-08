@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="250">
+        Title= "Calculator" Height="400" Width="250" Background="LightBlue" MinWidth="250" MinHeight="400">
     <Grid>
 
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -29,33 +29,33 @@
 
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="0" x:Name="main_textbox" Grid.ColumnSpan="4" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="2,20"></TextBox>
+        <TextBox Style="{DynamicResource Main_textbox_Style}" Padding="10" Grid.Row="0" x:Name="main_textbox" Grid.ColumnSpan="4" FontSize="20" Background="BurlyWood" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="2,5"></TextBox>
 
 
 
-        <Button x:Name="Clear_Button" Click="Clear_Button_Click" Grid.Column="0" Grid.Row="1" Content="C"/>
-        <Button x:Name="Left_Bracket_Button" Click="Left_Bracket_Button_Click" Grid.Column="1" Grid.Row="1" Content="("/>
-        <Button x:Name="Right_Bracket_Button" Click="Right_Bracket_Button_Click" Grid.Column="2" Grid.Row="1" Content=")"/>
-        <Button x:Name="Devide_Button" Click="Devide_Button_Click" Grid.Column="3" Grid.Row="1" Content="/"/>
+        <Button x:Name="Clear_Button" Style="{DynamicResource Control_btn_Style}"  Click="Clear_Button_Click" Grid.Column="0" Grid.Row="1" Content="C"/>
+        <Button x:Name="Left_Bracket_Button" Style="{DynamicResource Control_btn_Style}"  Click="Left_Bracket_Button_Click" Grid.Column="1" Grid.Row="1" Content="("/>
+        <Button x:Name="Right_Bracket_Button" Style="{DynamicResource Control_btn_Style}"  Click="Right_Bracket_Button_Click" Grid.Column="2" Grid.Row="1" Content=")"/>
+        <Button x:Name="Devide_Button" Style="{DynamicResource Control_btn_Style}"  Click="Devide_Button_Click" Grid.Column="3" Grid.Row="1" Content="/"/>
 
-        <Button x:Name="Seven_Button" Click="Seven_Button_Click" Grid.Column="0" Grid.Row="2" Content="7"/>
-        <Button x:Name="Eight_Button" Click="Eight_Button_Click" Grid.Column="1" Grid.Row="2" Content="8"/>
-        <Button x:Name="Nine_Button" Click="Nine_Button_Click"  Grid.Column="2" Grid.Row="2" Content="9"/>
-        <Button x:Name="Multiply_Button" Click="Multiply_Button_Click" Grid.Column="3" Grid.Row="2" Content="*"/>
+        <Button x:Name="Seven_Button" Style="{DynamicResource Control_btn_Style}"  Click="Seven_Button_Click" Grid.Column="0" Grid.Row="2" Content="7"/>
+        <Button x:Name="Eight_Button" Style="{DynamicResource Control_btn_Style}"  Click="Eight_Button_Click" Grid.Column="1" Grid.Row="2" Content="8"/>
+        <Button x:Name="Nine_Button" Style="{DynamicResource Control_btn_Style}"  Click="Nine_Button_Click"  Grid.Column="2" Grid.Row="2" Content="9"/>
+        <Button x:Name="Multiply_Button" Style="{DynamicResource Control_btn_Style}"  Click="Multiply_Button_Click" Grid.Column="3" Grid.Row="2" Content="*"/>
 
-        <Button x:Name="Four_Button" Click="Four_Button_Click" Grid.Column="0" Grid.Row="3" Content="4"/>
-        <Button x:Name="Five_Button" Click="Five_Button_Click" Grid.Column="1" Grid.Row="3" Content="5"/>
-        <Button x:Name="Sixe_Button" Click="Sixe_Button_Click" Grid.Column="2" Grid.Row="3" Content="6"/>
-        <Button x:Name="Minus_Button" Click="Minus_Button_Click" Grid.Column="3" Grid.Row="3" Content="-"/>
+        <Button x:Name="Four_Button" Style="{DynamicResource Control_btn_Style}"  Click="Four_Button_Click" Grid.Column="0" Grid.Row="3" Content="4"/>
+        <Button x:Name="Five_Button" Style="{DynamicResource Control_btn_Style}"  Click="Five_Button_Click" Grid.Column="1" Grid.Row="3" Content="5"/>
+        <Button x:Name="Sixe_Button" Style="{DynamicResource Control_btn_Style}"  Click="Sixe_Button_Click" Grid.Column="2" Grid.Row="3" Content="6"/>
+        <Button x:Name="Minus_Button" Style="{DynamicResource Control_btn_Style}"  Click="Minus_Button_Click" Grid.Column="3" Grid.Row="3" Content="-"/>
 
-        <Button x:Name="One_Button" Click="One_Button_Click" Grid.Column="0" Grid.Row="4" Content="1"/>
-        <Button x:Name="Two_Button" Click="Two_Button_Click" Grid.Column="1" Grid.Row="4" Content="2"/>
-        <Button x:Name="Three_Button" Click="Three_Button_Click" Grid.Column="2" Grid.Row="4" Content="3"/>
-        <Button x:Name="Plus_Button" Click="Plus_Button_Click" Grid.Column="3" Grid.Row="4" Content="+"/>
+        <Button x:Name="One_Button" Style="{DynamicResource Control_btn_Style}" Click="One_Button_Click" Grid.Column="0" Grid.Row="4" Content="1"/>
+        <Button x:Name="Two_Button" Style="{DynamicResource Control_btn_Style}" Click="Two_Button_Click" Grid.Column="1" Grid.Row="4" Content="2"/>
+        <Button x:Name="Three_Button" Style="{DynamicResource Control_btn_Style}" Click="Three_Button_Click" Grid.Column="2" Grid.Row="4" Content="3"/>
+        <Button x:Name="Plus_Button" Style="{DynamicResource Control_btn_Style}" Click="Plus_Button_Click" Grid.Column="3" Grid.Row="4" Content="+"/>
 
-        <Button x:Name="Zero_Button" Click="Zero_Button_Click" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="0"/>
-        <Button x:Name="Coma_Button" Click="Coma_Button_Click" Grid.Column="2" Grid.Row="5" Content=","/>
-        <Button x:Name="Result_Button" Grid.Column="3" Grid.Row="5" Content="=" Click="Result_Button_Click"/>
+        <Button x:Name="Zero_Button" Style="{DynamicResource Control_btn_Style}"  Click="Zero_Button_Click" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="0"/>
+        <Button x:Name="Coma_Button" Style="{DynamicResource Control_btn_Style}"  Click="Coma_Button_Click" Grid.Column="2" Grid.Row="5" Content=","/>
+        <Button x:Name="Result_Button" Style="{DynamicResource Control_btn_Style}"  Grid.Column="3" Grid.Row="5" Content="=" Click="Result_Button_Click"/>
 
 
 
@@ -63,5 +63,5 @@
 
 
     </Grid>
-    
+
 </Window>
