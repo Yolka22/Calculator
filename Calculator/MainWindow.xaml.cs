@@ -23,6 +23,36 @@ namespace Calculator
     {
 
 
+
+        static bool Is_Brackets_Closed(string input)
+        {
+            int left_brackets = 0;
+            int right_brackets = 0;
+
+
+            for (int i = 0; i < input.Length; i++)
+            {
+
+                if (input[i]=='(')
+                {
+                    left_brackets++;
+                }
+
+                if (input[i]==')')
+                {
+                    right_brackets++;
+                }
+
+            }
+
+            if (left_brackets == right_brackets)
+            {
+                return true;
+            }
+            else return false;
+
+        }
+
         static bool Is_Contains_Actions(string input)
         {
 
@@ -53,14 +83,38 @@ namespace Calculator
 
             if (Is_Contains_Actions(main_textbox.Text))
             {
-                string value = new DataTable().Compute(Main_Text(main_textbox.Text), null).ToString();
+                if (Is_Brackets_Closed(main_textbox.Text))
+                {
 
-                string action = main_textbox.Text + " = " + value;
+                    try { 
+                        string value = new DataTable().Compute(Main_Text(main_textbox.Text), null).ToString();
 
-                main_textbox.Text = value;
+                        string action = main_textbox.Text + " = " + value;
 
-                History_ListBox.Items.Add(action);
+                        main_textbox.Text = value;
+
+                        History_ListBox.Items.Add(action);
+                    } 
+                    catch
+                    {
+
+                        MessageBox.Show("Синтаксическая ошибка");
+                        
+                        
+
+                    }
+
+                    
+
+                    
+
+                    
+
+                }
+                else MessageBox.Show("Круглые скобки не закрыты");
+
             }
+            else MessageBox.Show("В примере нет математических действий");
 
             
         }
