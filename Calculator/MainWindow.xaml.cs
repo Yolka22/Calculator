@@ -13,6 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using System.Globalization;
+using System.Threading;
+using Calculator.Properties;
+using System.Windows.Threading;
+using System.Timers;
 
 namespace Calculator
 {
@@ -21,8 +26,62 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
 
+        DateTime _d = DateTime.Now;
 
+        TimeSpan Working_Time = TimeSpan.Zero;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateUI();
+
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+        }
+
+        private void UpdateUI()
+        {
+            Work_day.Content = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(_d.DayOfWeek);
+            History_Button.Content = language.history;
+            Work_time.Content = language.work_time;
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            Work_timer.Content = Working_Time += timer.Interval;
+        }
+
+        private void Menu_Ru_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru");
+            UpdateUI();
+
+            Work_day.Content = CultureInfo.GetCultureInfo("ru-RU").DateTimeFormat.GetDayName(_d.DayOfWeek);
+        }
+
+        private void Menu_En_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            UpdateUI();
+
+            Work_day.Content = CultureInfo.GetCultureInfo("en").DateTimeFormat.GetDayName(_d.DayOfWeek);
+        }
+
+        private void Menu_Fr_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("fr");
+            UpdateUI();
+
+            Work_day.Content = CultureInfo.GetCultureInfo("fr").DateTimeFormat.GetDayName(_d.DayOfWeek);
+        }
 
         static bool Is_Brackets_Closed(string input)
         {
@@ -64,13 +123,6 @@ namespace Calculator
 
         }
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-        
-
         static string Main_Text(string input)
         {
 
@@ -95,21 +147,9 @@ namespace Calculator
 
                         History_ListBox.Items.Add(action);
                     } 
-                    catch
-                    {
-
+                    catch{
                         MessageBox.Show("Синтаксическая ошибка");
-                        
-                        
-
                     }
-
-                    
-
-                    
-
-                    
-
                 }
                 else MessageBox.Show("Круглые скобки не закрыты");
 
@@ -220,9 +260,6 @@ namespace Calculator
             {
                 History_ListBox.Visibility = Visibility.Hidden;
             }
-           
-
-            
         }
 
         private void History_ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -233,5 +270,7 @@ namespace Calculator
             main_textbox.Text = filtred;
 
         }
+
+
     }
 }
